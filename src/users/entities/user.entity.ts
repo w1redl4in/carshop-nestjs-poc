@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Car } from 'src/cars/entities/car.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum UserProfile {
   DEFAULT = 'DEFAULT',
@@ -31,4 +32,8 @@ export class User {
   })
   @ApiProperty()
   profile: UserProfile;
+
+  @OneToMany(() => Car, (car) => car.user)
+  @ApiProperty({ type: () => Car })
+  car: Car;
 }
