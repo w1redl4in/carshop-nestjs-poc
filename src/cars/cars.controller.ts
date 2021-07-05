@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  ValidationPipe,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CarsService } from './cars.service';
@@ -18,7 +19,10 @@ export class CarsController {
   constructor(private readonly carsService: CarsService) {}
 
   @Post()
-  create(@Body() createCarDto: CreateCarDto) {
+  create(
+    @Body(new ValidationPipe({ errorHttpStatusCode: 422 }))
+    createCarDto: CreateCarDto,
+  ) {
     return this.carsService.create(createCarDto);
   }
 
