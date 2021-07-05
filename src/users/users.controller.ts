@@ -52,4 +52,9 @@ export class UsersController {
   remove(@Param('id') id: string) {
     return this.usersService.remove(+id);
   }
+
+  @Patch(':userId/carId/:carId')
+  addCarToUser(@Param('userId') userId: string, @Param('carId') carId: string) {
+    return this.usersService.addCarToUser(+userId, +carId);
+  }
 }
