@@ -34,6 +34,6 @@ export class User {
   profile: UserProfile;
 
   @OneToMany(() => Car, (car) => car.user)
-  @ApiProperty({ type: () => Car })
-  car: Car;
+  @ApiProperty()
+  cars?: Car[];
 }

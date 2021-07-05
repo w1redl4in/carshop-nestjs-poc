@@ -22,7 +22,7 @@ export class Car {
   @Column()
   rate: number;
 
-  @ManyToOne(() => User, (user) => user.car)
-  @ApiProperty({ type: () => User })
+  @ManyToOne(() => User, (user) => user.cars)
+  @ApiProperty()
   user: User;
 }
